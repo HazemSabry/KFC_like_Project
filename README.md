@@ -1,10 +1,3 @@
-HazemSabry: Wire a README.md file for this project
-
-Workspace: Collecting workspace information
-
-Here is a `README.md` file for your project:
-
-```markdown
 # KFC Egypt Website
 
 This project is a web application for KFC Egypt, providing users with an interactive platform to browse the menu, view deals, locate branches, and place orders. It includes a backend for managing data and a frontend for user interaction.
@@ -55,8 +48,6 @@ This project is a web application for KFC Egypt, providing users with an interac
 ---
 
 ## Project Structure
-
-```
 
 .
 ├── image/                     # Placeholder for images
