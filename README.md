@@ -50,35 +50,17 @@ This project is a web application for KFC Egypt, providing users with an interac
 ## Project Structure
 
 .
-├── image/                     # Placeholder for images
-├──
+├── image/                      # Placeholder for images
+├──kfc-egypt-backend.php        # Backend logic and API endpoints
+├──kfc-egypt-db-schema.sql      # Database schema and sample data
+├──kfc-egypt-website.css        # Stylesheet for the frontend
+├──kfc-egypt-website.html       # Frontend HTML file
 
-kfc-egypt-backend.php
-
-      # Backend logic and API endpoints
-├──
-
-kfc-egypt-db-schema.sql
-
-    # Database schema and sample data
-├──
-
-kfc-egypt-website.css
-
-      # Stylesheet for the frontend
-├──
-
-kfc-egypt-website.html
-
-     # Frontend HTML file
-
-```
-
----
 
 ## Setup Instructions
 
 1. **Clone the Repository**:
+
    ```bash
    git clone <repository-url>
    cd <repository-folder>
