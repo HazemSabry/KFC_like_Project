@@ -51,9 +51,13 @@ This project is a web application for KFC Egypt, providing users with an interac
 
 .
 ├── image/                      # Placeholder for images
+
 ├──kfc-egypt-backend.php        # Backend logic and API endpoints
+
 ├──kfc-egypt-db-schema.sql      # Database schema and sample data
+
 ├──kfc-egypt-website.css        # Stylesheet for the frontend
+
 ├──kfc-egypt-website.html       # Frontend HTML file
 
 
