@@ -7,10 +7,10 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./kfc-egypt-website.html:/usr/share/nginx/html/index.html:ro
-      - ./images:/usr/share/nginx/html/images:ro
-      - ./kfc-egypt-website.css:/usr/share/nginx/html/kfc-egypt-website.css:ro
-      - ./kfc-egypt-website.js:/usr/share/nginx/html/kfc-egypt-website.js:ro
+      - ./Frontend/kfc-egypt-website.html:/usr/share/nginx/html/index.html:ro
+      - ./Frontend/images:/usr/share/nginx/html/images:ro
+      - ./Frontend/kfc-egypt-website.css:/usr/share/nginx/html/kfc-egypt-website.css:ro
+      - ./Frontend/kfc-egypt-website.js:/usr/share/nginx/html/kfc-egypt-website.js:ro
     depends_on:
       - backend
     restart: always
@@ -27,16 +27,18 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
-      - ./kfc-egypt-db-schema.sql:/docker-entrypoint-initdb.d/kfc-egypt-db-schema.sql:ro
+      - ./Database/kfc-egypt-db-schema.sql:/docker-entrypoint-initdb.d/kfc-egypt-db-schema.sql:ro
     restart: always
 
   backend:
-    image: php:8.1-apache
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
     container_name: kfc-egypt-backend
     ports:
       - "8081:80"
     volumes:
-      - ./kfc-egypt-backend.php:/var/www/html/index.php:ro
+      - ./Backend/kfc-egypt-backend.php:/var/www/html/index.php:ro
     depends_on:
       - db
     restart: always

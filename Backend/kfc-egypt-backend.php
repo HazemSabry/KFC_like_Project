@@ -11,7 +11,7 @@
  * @throws Exception If the connection to the database fails.
  */
 function connectDB() {
-    $servername = "localhost";
+    $servername = "db";
     $username = "kfc_user";
     $password = "kfc_password";
     $dbname = "kfc_egypt_db";
