@@ -8,6 +8,7 @@ services:
       - "8080:80"
     volumes:
       - ./kfc-egypt-website.html:/usr/share/nginx/html/index.html:ro
+      - ./images:/usr/share/nginx/html/images:ro
       - ./kfc-egypt-website.css:/usr/share/nginx/html/kfc-egypt-website.css:ro
       - ./kfc-egypt-website.js:/usr/share/nginx/html/kfc-egypt-website.js:ro
     depends_on:
