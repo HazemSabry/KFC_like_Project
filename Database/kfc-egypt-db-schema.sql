@@ -202,7 +202,8 @@ CREATE TABLE locations (
     latitude DECIMAL(10, 8),
     longitude DECIMAL(11, 8),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    image_url VARCHAR(255) DEFAULT '/images/default-location.jpg'
 );
 -- Special Offers table
 /**
@@ -479,7 +480,8 @@ INSERT INTO locations (
         phone,
         opening_hours,
         latitude,
-        longitude
+        longitude,
+        image_url
     )
 VALUES (
         'KFC Nasr City',
@@ -488,7 +490,8 @@ VALUES (
         '02-24000000',
         '10:00 AM - 12:00 AM',
         30.055166,
-        31.341267
+        31.341267,
+        '/images/giza-pyramids-mall.jpg'
     ),
     (
         'KFC Downtown',
@@ -497,7 +500,8 @@ VALUES (
         '02-25000000',
         '10:00 AM - 2:00 AM',
         30.046511,
-        31.241234
+        31.241234,
+        '/images/cairo-downtown.jpg'
     ),
     (
         'KFC Alexandria Corniche',
@@ -506,7 +510,8 @@ VALUES (
         '03-5000000',
         '10:00 AM - 1:00 AM',
         31.245165,
-        29.976543
+        29.976543,
+        '/images/alexandria-mall.jpg'
     );
 /**
  * This script inserts promotional codes into the `promo_codes` table.
@@ -544,4 +549,56 @@ VALUES (
         100.00,
         '2025-01-01 00:00:00',
         '2025-12-31 23:59:59'
+    );
+/**
+ * This SQL script inserts multiple rows into the `deals` table. Each row represents a specific deal offered by the business, with the following columns:
+ * 
+ * - `deal_name`: The name of the deal (e.g., "Family Feast").
+ * - `description`: A brief description of the deal, including its contents.
+ * - `price`: The price of the deal in the local currency.
+ * - `image_url`: The relative path to the image representing the deal.
+ * - `active`: A flag indicating whether the deal is currently active (1 for active, 0 for inactive).
+ * - `priority`: A numerical value representing the priority or ranking of the deal (higher priority deals may appear first in listings).
+ * 
+ * The script includes four sample deals with varying details, prices, and priorities.
+ */
+INSERT INTO deals (
+        deal_name,
+        description,
+        price,
+        image_url,
+        active,
+        priority
+    )
+VALUES (
+        'Family Feast',
+        '10pc chicken, 4 portions of fries, coleslaw, and 2L drink',
+        599.00,
+        '/images/family-feast.jpg',
+        1,
+        3
+    ),
+    (
+        'Dinner Box',
+        '4pc chicken, 2 portions of fries, and a drink',
+        125.00,
+        '/images/dinner-box.jpg',
+        1,
+        2
+    ),
+    (
+        'Zinger Combo',
+        'Zinger sandwich with fries and a drink',
+        150.00,
+        '/images/zinger.jpg',
+        1,
+        1
+    ),
+    (
+        'Potato Wedges',
+        'Crispy potato wedges with a hint of spices',
+        20.00,
+        '/images/potato-wedges.jpg',
+        1,
+        0
     );
