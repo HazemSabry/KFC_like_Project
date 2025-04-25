@@ -1,5 +1,5 @@
 # Use the base PHP image
-FROM php:8.1-apache
+FROM php:8.4-apache-bullseye AS base
 
 # Install MySQLi extension
 RUN docker-php-ext-install mysqli
