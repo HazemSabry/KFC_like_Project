@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  web:
+    image: nginx:latest
+    container_name: kfc-egypt-web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./kfc-egypt-website.html:/usr/share/nginx/html/index.html:ro
+      - ./kfc-egypt-website.css:/usr/share/nginx/html/kfc-egypt-website.css:ro
+      - ./kfc-egypt-website.js:/usr/share/nginx/html/kfc-egypt-website.js:ro
+    depends_on:
+      - backend
+    restart: always
+
+  db:
+    image: mysql:8.0
+    container_name: kfc-egypt-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: kfc_egypt_db
+      MYSQL_USER: kfc_user
+      MYSQL_PASSWORD: kfc_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./kfc-egypt-db-schema.sql:/docker-entrypoint-initdb.d/kfc-egypt-db-schema.sql:ro
+    restart: always
+
+  backend:
+    image: php:8.1-apache
+    container_name: kfc-egypt-backend
+    ports:
+      - "8081:80"
+    volumes:
+      - ./kfc-egypt-backend.php:/var/www/html/index.php:ro
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  db_data:
