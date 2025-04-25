@@ -1,4 +1,23 @@
 <?php
+// Enable CORS
+header("Access-Control-Allow-Origin: *"); // Allow requests from any origin
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Allow specific HTTP methods
+header("Access-Control-Allow-Headers: Content-Type, Authorization"); // Allow specific headers
+
+// Handle preflight requests
+/**
+ * Handles preflight requests for CORS (Cross-Origin Resource Sharing).
+ * 
+ * If the HTTP request method is 'OPTIONS', this block sends a 200 OK 
+ * response and terminates the script execution. This is typically used 
+ * to handle preflight requests sent by browsers to check permissions 
+ * before making the actual request.
+ */
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
 // Database connection
 /**
  * Establishes a connection to the MySQL database.
